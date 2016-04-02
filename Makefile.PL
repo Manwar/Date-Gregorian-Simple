@@ -30,8 +30,8 @@ WriteMakefile(
         resources => {
             repository => {
                 type => 'git',
-                url  => 'https://github.com/Manwar/Date-Gregorian-Simple.git',
-                web  => 'https://github.com/Manwar/Date-Gregorian-Simple',
+                url  => 'https://github.com/manwar/Date-Gregorian-Simple.git',
+                web  => 'https://github.com/manwar/Date-Gregorian-Simple',
             },
         }})
      : ()
