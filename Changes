@@ -1,5 +1,9 @@
 Revision history for Date::Gregorian::Simple
 
+0.04  Mon Apr 25 11:20:00 2016
+      - Updated the dependency on Date::Utils v0.16.
+      - Added section "SEE ALSO".
+
 0.03  Thu Apr 07 10:10:00 2016
       - Added unit test script.
       - Re-generated meta files correctly.

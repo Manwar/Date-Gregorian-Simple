@@ -1,6 +1,6 @@
 package Date::Gregorian::Simple;
 
-$Date::Gregorian::Simple::VERSION   = '0.03';
+$Date::Gregorian::Simple::VERSION   = '0.04';
 $Date::Gregorian::Simple::AUTHORITY = 'cpan:MANWAR';
 
 =head1 NAME
@@ -9,7 +9,7 @@ Date::Gregorian::Simple - Represents Gregorian date.
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
@@ -231,6 +231,20 @@ Mohammad S Anwar, C<< <mohammad.anwar at yahoo.com> >>
 =head1 REPOSITORY
 
 L<https://github.com/manwar/Date-Gregorian-Simple>
+
+=head1 SEE ALSO
+
+=over 4
+
+=item L<Date::Bahai::Simple>
+
+=item L<Date::Hijri::Simple>
+
+=item L<Date::Persian::Simple>
+
+=item L<Date::Saka::Simple>
+
+=back
 
 =head1 BUGS
 

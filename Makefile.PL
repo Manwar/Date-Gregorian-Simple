@@ -21,7 +21,7 @@ WriteMakefile(
     PREREQ_PM => {
         'Moo'              => '2.000000',
         'namespace::clean' => '0.24',
-        'Date::Utils'      => '0.11',
+        'Date::Utils'      => '0.16',
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES => 'Date-Gregorian-Simple-*' },
