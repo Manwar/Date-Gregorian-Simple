@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 use 5.006;
-use Test::More tests => 12;
+use Test::More tests => 15;
 use strict; use warnings;
 use Date::Gregorian::Simple;
 
@@ -13,6 +13,15 @@ is($date->day_of_week, 4);
 ok($date->validate_year(1394));
 eval { $date->validate_year(-1394); };
 like($@, qr/ERROR: Invalid year \[\-1394\]./);
+
+eval { $date->validate_month('DecemberX'); };
+like($@, qr/ERROR: Invalid month name/);
+
+eval { $date->validate_month_name('MAY'); };
+like($@, qr/^\s*$/);
+
+eval { $date->validate_month_name('May'); };
+like($@, qr/^\s*$/);
 
 ok($date->validate_month(11));
 eval { $date->validate_month(13); };

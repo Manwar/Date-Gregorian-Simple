@@ -1,5 +1,12 @@
 Revision history for Date::Gregorian::Simple
 
+0.05  Sat May 14 05:00:00 2016
+      - Updated the dependency on Date::Utils v0.18.
+      - Updated method get_calendar() and method as_string() to use get_month_name().
+      - Renamed method gregorian_months() to months().
+      - Renamed method gregorian_days() to days().
+      - Updated method get_calendar() to respect the above changes.
+
 0.04  Mon Apr 25 11:20:00 2016
       - Updated the dependency on Date::Utils v0.16.
       - Added section "SEE ALSO".

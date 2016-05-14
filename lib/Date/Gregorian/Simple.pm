@@ -1,6 +1,6 @@
 package Date::Gregorian::Simple;
 
-$Date::Gregorian::Simple::VERSION   = '0.04';
+$Date::Gregorian::Simple::VERSION   = '0.05';
 $Date::Gregorian::Simple::AUTHORITY = 'cpan:MANWAR';
 
 =head1 NAME
@@ -9,7 +9,7 @@ Date::Gregorian::Simple - Represents Gregorian date.
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
@@ -44,12 +44,11 @@ our $GREGORIAN_MONTH_DAYS = [
        31 31 30 31 30 31)
 ];
 
-has gregorian_days   => (is => 'ro', default => sub { $GREGORIAN_DAYS   });
-has gregorian_months => (is => 'ro', default => sub { $GREGORIAN_MONTHS });
-
-has year  => (is => 'rw', predicate => 1);
-has month => (is => 'rw', predicate => 1);
-has day   => (is => 'rw', predicate => 1);
+has days   => (is => 'ro', default   => sub { $GREGORIAN_DAYS   });
+has months => (is => 'ro', default   => sub { $GREGORIAN_MONTHS });
+has year   => (is => 'rw', predicate => 1);
+has month  => (is => 'rw', predicate => 1);
+has day    => (is => 'rw', predicate => 1);
 
 with 'Date::Utils';
 
@@ -182,18 +181,27 @@ Returns color coded Gregorian calendar for the given C<$month> and C<$year>.
 sub get_calendar {
     my ($self, $month, $year) = @_;
 
-    $self->validate_month($month);
-    $self->validate_year($year);
+    if (defined $month && defined $year) {
+        $self->validate_month($month);
+        $self->validate_year($year);
+
+        if ($month =~ /^[A-Z]+$/i) {
+            $month = $self->get_month_number($month);
+        }
+    }
+    else {
+        $month = $self->month;
+        $year  = $self->year;
+    }
 
     my $date = Date::Gregorian::Simple->new({ year => $year, month => $month, day => 1 });
-    my $days = $date->days_in_month_year($month, $year);
 
     return $self->create_calendar(
         {
             start_index => $date->day_of_week,
-            month_name  => $self->gregorian_months->[$month],
-            days        => $days,
-            day_names   => $self->gregorian_days,
+            month_name  => $date->get_month_name,
+            days        => $date->days_in_month_year($month, $year),
+            day_names   => $self->days,
             year        => $year
         });
 }
@@ -221,7 +229,7 @@ sub days_in_month_year {
 sub as_string {
     my ($self) = @_;
 
-    return sprintf("%d, %s %d", $self->day, $self->gregorian_months->[$self->month], $self->year);
+    return sprintf("%d, %s %d", $self->day, $self->get_month_name, $self->year);
 }
 
 =head1 AUTHOR
