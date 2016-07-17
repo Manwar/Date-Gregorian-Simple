@@ -1,6 +1,6 @@
 package Date::Gregorian::Simple;
 
-$Date::Gregorian::Simple::VERSION   = '0.05';
+$Date::Gregorian::Simple::VERSION   = '0.06';
 $Date::Gregorian::Simple::AUTHORITY = 'cpan:MANWAR';
 
 =head1 NAME
@@ -9,7 +9,7 @@ Date::Gregorian::Simple - Represents Gregorian date.
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 
@@ -170,40 +170,6 @@ sub is_leap_year {
     my ($self, $year) = @_;
 
     return $self->is_gregorian_leap_year($year);
-}
-
-=head2 get_calendar($month, $year)
-
-Returns color coded Gregorian calendar for the given C<$month> and C<$year>.
-
-=cut
-
-sub get_calendar {
-    my ($self, $month, $year) = @_;
-
-    if (defined $month && defined $year) {
-        $self->validate_month($month);
-        $self->validate_year($year);
-
-        if ($month =~ /^[A-Z]+$/i) {
-            $month = $self->get_month_number($month);
-        }
-    }
-    else {
-        $month = $self->month;
-        $year  = $self->year;
-    }
-
-    my $date = Date::Gregorian::Simple->new({ year => $year, month => $month, day => 1 });
-
-    return $self->create_calendar(
-        {
-            start_index => $date->day_of_week,
-            month_name  => $date->get_month_name,
-            days        => $date->days_in_month_year($month, $year),
-            day_names   => $self->days,
-            year        => $year
-        });
 }
 
 sub days_in_year {
