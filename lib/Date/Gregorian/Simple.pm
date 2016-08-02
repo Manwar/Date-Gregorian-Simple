@@ -1,6 +1,6 @@
 package Date::Gregorian::Simple;
 
-$Date::Gregorian::Simple::VERSION   = '0.06';
+$Date::Gregorian::Simple::VERSION   = '0.07';
 $Date::Gregorian::Simple::AUTHORITY = 'cpan:MANWAR';
 
 =head1 NAME
@@ -9,7 +9,7 @@ Date::Gregorian::Simple - Represents Gregorian date.
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =cut
 
