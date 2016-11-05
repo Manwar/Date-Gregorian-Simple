@@ -1,5 +1,8 @@
 Revision history for Date::Gregorian::Simple
 
+0.08  Sat Nov 05 13:55:00 2016
+      - Added key 'provides' to the Makefile.PL script.
+
 0.07  Tue Aug 02 11:45:00 2016
       - Updated the dependency on Date::Utils v0.21.
 

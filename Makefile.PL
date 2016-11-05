@@ -27,6 +27,9 @@ WriteMakefile(
     clean => { FILES => 'Date-Gregorian-Simple-*' },
     (eval { ExtUtils::MakeMaker->VERSION(6.46) } ? (META_MERGE => {
         'meta-spec' => { version => 2 },
+        provides    => {
+            'Date::Gregorian::Simple' => { file => 'lib/Date/Gregorian/Simple.pm', version => '0.08' },
+        },
         resources => {
             repository => {
                 type => 'git',
